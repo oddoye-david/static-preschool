@@ -1,0 +1,203 @@
+@font-face {
+    font-family: schoolBell;
+    src: url(../fonts/Schoolbell.ttf);
+    font-style : normal;
+    font-weight : 100;
+}
+
+body{
+
+  font-size:2em;
+   color : $text;
+   font-family : schoolBell;
+   background-color: #f9f9f9;
+
+    @media #{$medium}{
+         font-size:5em;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.shown {
+    display: block;
+}
+
+button{
+    border:2px solid #f6903d;
+    background-color:#e1f5c4;
+    color: $text;
+    box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);
+    font-family:inherit;
+    font-size:1.2rem;
+
+    &.circular{
+        padding:5px;
+        width: 50px;
+        height:50px;
+        border-radius:100%;
+        outline:none;
+
+        @media #{$medium}{
+            padding:10px;
+            width: 80px;
+            height:80px;
+        }
+    }
+
+    &:hover,&:focus{
+        background-color:#f6903d;
+    }
+
+    @media #{$medium}{
+        font-size:1.5rem;
+    }
+}
+
+.welcome{
+    margin-top:50px;
+    text-align:center;
+
+    &-message{
+        font-size:3.5rem;
+    }
+
+    button{
+        border-radius:20px;
+    }
+
+    @media #{$medium}{
+        margin-top:100px;
+    }
+}
+
+.score{
+
+    margin : 10px auto 20px;
+    width: 250px;
+
+    @media #{$medium}{
+        margin : 10px auto;
+    }
+
+    .badge{
+        margin-bottom : 15px;
+        width:50px;
+        height:50px;
+        margin-left:0;
+        background-image:url('../img/medal.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        &--empty{
+          background-image:url('../img/medal-empty.png');
+        }
+    }
+
+}
+
+.question-set{
+    margin-top:20px;
+}
+
+.question{
+
+    &__heading{
+        font-size : 2.5rem;
+        padding:20px;
+        text-align:center;
+
+        @media #{$medium}{
+            font-size : 3.5rem;
+        }
+
+    }
+
+    &__image-holder{
+        position : relative;
+    }
+
+    &__explanation{
+        background-color: #e1f5c4;
+        border-radius : 10px;
+        padding : 20px;
+        opacity : 0;
+        z-index: -1 ;
+        transition : opacity 0.5s;
+        box-shadow : 0px 0px 1px 1px rgba(0,0,0,0.05) ,
+            0px 5px 2px 2px rgba(0,0,0,0.1);
+        position:absolute;
+        width:100%;
+        top:0;
+        p{
+            font-size: 2rem;
+        }
+
+        &.active{
+            z-index:200;
+            opacity : 1;
+        }
+    }
+
+    &__score{
+
+        .badge{
+            display:inline-block;
+            width : 50px;
+            height: 50px;
+            background-image: url(../img/medal.png);
+            background-size : 100% auto;
+
+            @media #{$medium}{
+                width : 80px;
+                height: 80px;
+            }
+        }
+    }
+
+    &__image{
+        display:block;
+        height: 300px;
+        width:auto;
+        margin:40px auto;
+    }
+
+    &__option-item{
+        width:90%;
+        max-width:300px;
+        margin:0 auto 15px;
+        font-size : $question-text-size;
+        padding: 10px;
+        display:block;
+
+        border : 5px solid $green;
+        border-radius : 30%/90%;
+        text-align:center;
+        text-transform:lowercase;
+        cursor:pointer;
+        transition: box-shadow 0.5s,background-color 0.5s;
+
+        &:hover{
+             box-shadow: 0 3px 1px 1px rgba(0,0,0,0.2);
+             background-color:$green;
+        }
+
+        @media #{$medium}{
+            width:46%;
+            margin:2%;
+            max-width:none;
+            padding: 10px;
+            display:inline-block;
+            float:left;
+
+            &:hover{
+                animation:pulse 1s infinite;
+                box-shadow: 0 3px 1px 1px rgba(0,0,0,0.2);
+                background-color:$green;
+            }
+        }
+    }
+
+}

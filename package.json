@@ -3,13 +3,19 @@
   "description": "Static site for DevCongress&#39; PreSchool project",
   "dependencies": {
     "autoprefixer-stylus": "0.9.x",
+    "axios": "^0.15.3",
     "axis": "0.6.x",
+    "client-templates": "^0.2.0",
     "coffee-script": "1.x",
     "css-pipeline": "0.3.x",
     "jade": "1.x",
     "js-pipeline": "0.2.x",
     "jstransformer-marked": "1.x",
     "marked": "0.3.x",
+    "node-sass": "^4.3.0",
+    "request": "^2.79.0",
+    "roots-config": "0.0.2",
+    "roots-records": "^0.5.1",
     "rupture": "0.6.x",
     "stylus": "0.54.x"
   }

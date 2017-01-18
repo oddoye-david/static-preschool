@@ -1,0 +1,12 @@
+div.question.hidden(data-question-id = question.id)
+        p.question__heading=question.question
+        div.question__image-holder
+            div.question__explanation.clearfix
+                p.narration
+                p.explanation=question.explanation
+                div.question__score.text-center
+                button.question__explanation-close.circular.right OK!
+            img.question__image(src=question.resource.url)
+        ul.question__otpion-list.no-bullet.clearfix
+            for option in question.options
+                li.question__option-item=option

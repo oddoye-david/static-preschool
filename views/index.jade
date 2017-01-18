@@ -1,6 +1,12 @@
 extends layout
 
 block content
-  h3 Welcome to roots!
-  :marked
-    Find tutorials and documentation at http://roots.cx : )
+  div.row
+    div.small-12.small-offset-0.medium-8.medium-offset-2.columns
+      div.welcome
+        p.welcome-message Welcome to React Pre-School
+        button#play-button play!
+      div.question-set
+        for question, q in records.questions
+          if q < config.static_items
+            include templates/question
