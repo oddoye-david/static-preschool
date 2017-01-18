@@ -1,5 +1,4 @@
-'use strict';
-
+'use strict'
 const answeredQuestions = [];
 const animations = [
     'zoomIn', 'flipInY',
@@ -17,9 +16,9 @@ function getRandomNumber(max) {
 }
 
 function getRandomQuestion() {
-    const randomlyChosenIndex = getRandomNumber(questions.length)
+    let randomlyChosenIndex = getRandomNumber(questions.length)
     if (questions.length) {
-        const question = questions[randomlyChosenIndex]
+        let question = questions[randomlyChosenIndex]
         questions.splice(randomlyChosenIndex, 1)
         return question;
     }
@@ -27,8 +26,13 @@ function getRandomQuestion() {
     return null;
 }
 
+function addMoreClasses(element, arrayOfClasses) {
+    element.setAttribute('class', element.getAttribute('class') + ` ${arrayOfClasses.join(' ')}`)
+    return
+}
+
 function getRandomEntranceAnimation() {
-    const animation = animations[getRandomNumber(animations.length)];
+    let animation = animations[getRandomNumber(animations.length)];
     return `${animation} 1.5s`
 }
 
@@ -43,9 +47,9 @@ function animateInQuestion(questionDOMNode) {
 function showFeedBack(questionDOMNode, correct, question) {
     console.log(question.triesLeft)
     if (correct || question.triesLeft <= 0) {
-        const badges = [];
+        let badges = [];
         if (correct) {
-            for (const i = 1; i <= question.triesLeft + 1; i++) {
+            for (let i = 1; i <= question.triesLeft + 1; i++) {
                 badges.push(`<span class = "badge animated bounceIn"
             style = "animation-delay: ${i * badgeDelay}s"></span>`)
             }
@@ -67,7 +71,7 @@ function showFeedBack(questionDOMNode, correct, question) {
 
 function setupOptionListeners(questionDOMNode, question) {
     return new Promise((resolve) => {
-        const questionOptions = questionDOMNode.querySelectorAll('li.question__option-item')
+        let questionOptions = questionDOMNode.querySelectorAll('li.question__option-item')
         questionOptions.forEach(questionOption => {
             questionOption.addEventListener('click', () => {
                 question.triesLeft--;
@@ -80,14 +84,14 @@ function setupOptionListeners(questionDOMNode, question) {
 }
 
 function speak(text) {
-    const textToSpeech = new SpeechSynthesisUtterance(text);
+    let textToSpeech = new SpeechSynthesisUtterance(text);
     speechSynthesis.speak(textToSpeech);
 }
 
 function nextQuestion() {
     if (questions.length) {
-        const randomlyChosenQuestion = getRandomQuestion();
-        const questionDOMNode = document.querySelector(`[data-question-id='${randomlyChosenQuestion.id}']`)
+        let randomlyChosenQuestion = getRandomQuestion();
+        let questionDOMNode = document.querySelector(`[data-question-id='${randomlyChosenQuestion.id}']`)
         animateInQuestion(questionDOMNode)
             .then(() => setupOptionListeners(questionDOMNode, randomlyChosenQuestion))
             .then(() => speak(randomlyChosenQuestion.question))

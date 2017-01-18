@@ -9,7 +9,7 @@ axios = require 'axios'
 api_url = 'https://cdn.rawgit.com/oddoye-david/eebed8368e032fcb72bfbb60966d73fa/raw/73769dc5c79a97e9b9741930cb2144d69b1f6e17/questions.json'
 
 module.exports =
-  ignores: ['readme.md', '**/layout.*', '**/_*', '.gitignore', 'ship.*conf']
+  ignores: ['readme.md', '**/layout.*', '**/_*', '.gitignore', 'ship.*conf', 'bower_components/**']
 
   extensions: [
     js_pipeline(files: 'assets/js/*.js'),
