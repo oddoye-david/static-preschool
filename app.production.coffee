@@ -3,7 +3,6 @@ css_pipeline = require 'css-pipeline'
 image_pipeline = require('roots-image-pipeline')
 templates = require 'client-templates'
 records = require 'roots-records'
-sass = require 'node-sass'
 marked = require 'marked'
 massageData = require './massageData'
 
@@ -20,5 +19,5 @@ module.exports =
     css_pipeline(files: 'assets/css/*.scss', out: 'css/build.css', minify: true),
     image_pipeline(files: "assets/img/**", out: 'img', compress: true)
     templates(base: 'views/templates'),
-    records(questions: { url: api_url })
+    records(questions: { url: api_url , hook: (data) -> massageData(data)})
   ]

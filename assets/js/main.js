@@ -16,9 +16,9 @@ function getRandomNumber(max) {
 }
 
 function getRandomQuestion() {
-    let randomlyChosenIndex = getRandomNumber(questions.length)
+    var randomlyChosenIndex = getRandomNumber(questions.length)
     if (questions.length) {
-        let question = questions[randomlyChosenIndex]
+        var question = questions[randomlyChosenIndex]
         questions.splice(randomlyChosenIndex, 1)
         return question;
     }
@@ -26,18 +26,13 @@ function getRandomQuestion() {
     return null;
 }
 
-function addMoreClasses(element, arrayOfClasses) {
-    element.setAttribute('class', element.getAttribute('class') + ` ${arrayOfClasses.join(' ')}`)
-    return
-}
-
 function getRandomEntranceAnimation() {
-    let animation = animations[getRandomNumber(animations.length)];
-    return `${animation} 1.5s`
+    var animation = animations[getRandomNumber(animations.length)];
+    return animation + '1.5s'
 }
 
 function animateInQuestion(questionDOMNode) {
-    return new Promise((resolve) => {
+    return new Promise(function (resolve) {
         questionDOMNode.classList.add('shown')
         questionDOMNode.querySelector('img').style.animation = getRandomEntranceAnimation()
         resolve()
@@ -46,17 +41,16 @@ function animateInQuestion(questionDOMNode) {
 
 function showFeedBack(questionDOMNode, correct, question) {
     if (correct || question.triesLeft <= 0) {
-        let badges = [];
+        var badges = [];
         if (correct) {
-            for (let i = 1; i <= question.triesLeft + 1; i++) {
-                badges.push(`<span class = "badge animated bounceIn"
-            style = "animation-delay: ${i * badgeDelay}s"></span>`)
+            for (var i = 1; i <= question.triesLeft + 1; i++) {
+                badges.push('<span class = "badge animated bounceIn" style = "animation-delay: ' + i * badgeDelay + 's"></span>')
             }
         }
         questionDOMNode.querySelector('p.narration').innerText = correct ? narrations.right : narrations.wrong
         questionDOMNode.querySelector('div.question__score').innerHTML = badges.join('')
         questionDOMNode.querySelector('div.question__explanation').classList.add('active')
-        questionDOMNode.querySelector('.question__explanation-close').addEventListener('click', () => {
+        questionDOMNode.querySelector('.question__explanation-close').addEventListener('click', function () {
             questionDOMNode.querySelector('div.question__explanation').classList.remove('active')
             questionDOMNode.classList.remove('shown')
             // remove Node
@@ -70,10 +64,10 @@ function showFeedBack(questionDOMNode, correct, question) {
 }
 
 function setupOptionListeners(questionDOMNode, question) {
-    return new Promise((resolve) => {
-        let questionOptions = questionDOMNode.querySelectorAll('li.question__option-item')
-        questionOptions.forEach(questionOption => {
-            questionOption.addEventListener('click', () => {
+    return new Promise(function (resolve) {
+        var questionOptions = questionDOMNode.querySelectorAll('li.question__option-item')
+        questionOptions.forEach(function (questionOption) {
+            questionOption.addEventListener('click', function () {
                 question.triesLeft--;
                 showFeedBack(questionDOMNode, questionOption.innerText.toLowerCase() === question.answer.toLowerCase(), question)
             })
@@ -84,17 +78,17 @@ function setupOptionListeners(questionDOMNode, question) {
 }
 
 function speak(text) {
-    let textToSpeech = new SpeechSynthesisUtterance(text);
+    var textToSpeech = new SpeechSynthesisUtterance(text);
     speechSynthesis.speak(textToSpeech);
 }
 
 function nextQuestion() {
     if (questions.length) {
-        let randomlyChosenQuestion = getRandomQuestion();
-        let questionDOMNode = document.querySelector(`[data-question-id='${randomlyChosenQuestion.id}']`)
+        var randomlyChosenQuestion = getRandomQuestion();
+        var questionDOMNode = document.querySelector('[data-question-id="' + randomlyChosenQuestion.id +'"]')
         animateInQuestion(questionDOMNode)
-            .then(() => setupOptionListeners(questionDOMNode, randomlyChosenQuestion))
-            .then(() => speak(randomlyChosenQuestion.question))
+            .then(function () {return setupOptionListeners(questionDOMNode, randomlyChosenQuestion)})
+            .then(function () {return  speak(randomlyChosenQuestion.question)})
         return;
     }
 
@@ -104,7 +98,7 @@ function nextQuestion() {
 const playButton = document.querySelector('#play-button')
 const welcomeScreen = document.querySelector('div.welcome')
 
-playButton.addEventListener('click', () => {
+playButton.addEventListener('click', function () {
     welcomeScreen.classList.add('hidden')
     nextQuestion()
 })
