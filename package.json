@@ -11,6 +11,7 @@
     "node-sass": "^4.3.0",
     "roots-config": "0.0.2",
     "roots-image-pipeline": "^0.3.0",
-    "roots-records": "^0.5.1"
+    "roots-records": "^0.5.1",
+     "roots": "3.0.x"
   }
 }
