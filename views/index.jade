@@ -7,6 +7,5 @@ block content
         p.welcome-message Welcome to JAMstack Pre-School
         button#play-button play!
       div.question-set
-        for question, q in records.questions
-          if q < config.static_items
-            include templates/question
+        for question in records.questions
+          include templates/question

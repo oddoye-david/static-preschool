@@ -45,7 +45,6 @@ function animateInQuestion(questionDOMNode) {
 }
 
 function showFeedBack(questionDOMNode, correct, question) {
-    console.log(question.triesLeft)
     if (correct || question.triesLeft <= 0) {
         let badges = [];
         if (correct) {
@@ -60,12 +59,13 @@ function showFeedBack(questionDOMNode, correct, question) {
         questionDOMNode.querySelector('.question__explanation-close').addEventListener('click', () => {
             questionDOMNode.querySelector('div.question__explanation').classList.remove('active')
             questionDOMNode.classList.remove('shown')
+            // remove Node
+            // Add new one
             nextQuestion()
         })
         return
     }
 
-    console.log('More tries')
     return
 }
 
@@ -75,7 +75,7 @@ function setupOptionListeners(questionDOMNode, question) {
         questionOptions.forEach(questionOption => {
             questionOption.addEventListener('click', () => {
                 question.triesLeft--;
-                showFeedBack(questionDOMNode, questionOption.innerText === question.answer, question)
+                showFeedBack(questionDOMNode, questionOption.innerText.toLowerCase() === question.answer.toLowerCase(), question)
             })
         })
         question.triesLeft = question.options.length - 1
