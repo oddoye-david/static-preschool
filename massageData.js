@@ -7,7 +7,7 @@ function massageData(data) {
         })[0].fields.file.url
         return newItem
     })
-    return items
+    return items 
 }
 
 module.exports = massageData
