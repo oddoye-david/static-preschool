@@ -15,8 +15,8 @@ module.exports =
       marked: marked
 
   extensions: [
-    js_pipeline(files: 'assets/js/*.js',  out: 'js/build.js', minify: true),
-    css_pipeline(files: 'assets/css/*.scss', out: 'css/build.css', minify: true),
+    js_pipeline(files: 'assets/js/*.js',  out: 'js/build.js', minify: true, hash: true),
+    css_pipeline(files: 'assets/css/*.scss', out: 'css/build.css', minify: true, hash: true),
     image_pipeline(files: "assets/img/**", out: 'img', compress: true)
     templates(base: 'views/templates'),
     records(questions: { url: api_url , hook: (data) -> massageData(data)})
