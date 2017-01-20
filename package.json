@@ -2,6 +2,7 @@
   "name": "static-preschool",
   "description": "Static site for DevCongress&#39; PreSchool project",
   "dependencies": {
+    "client-templates": "^0.2.0",
     "coffee-script": "1.x",
     "css-pipeline": "0.3.x",
     "jade": "1.x",
@@ -9,9 +10,9 @@
     "jstransformer-marked": "1.x",
     "marked": "^0.3.6",
     "node-sass": "^4.3.0",
+    "roots": "3.0.x",
     "roots-config": "0.0.2",
     "roots-image-pipeline": "^0.3.0",
-    "roots-records": "^0.5.1",
-     "roots": "3.0.x"
+    "roots-records": "^0.5.1"
   }
 }
