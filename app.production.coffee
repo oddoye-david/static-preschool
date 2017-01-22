@@ -1,6 +1,6 @@
 js_pipeline  = require 'js-pipeline'
 css_pipeline = require 'css-pipeline'
-image_pipeline = require('roots-image-pipeline')
+image_pipeline = require 'roots-image-pipeline'
 templates = require 'client-templates'
 records = require 'roots-records'
 marked = require 'marked'

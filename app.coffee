@@ -3,7 +3,6 @@ css_pipeline = require 'css-pipeline'
 image_pipeline = require('roots-image-pipeline')
 templates = require 'client-templates'
 records = require 'roots-records'
-sass = require 'node-sass'
 marked = require 'marked'
 massageData = require './massageData'
 
